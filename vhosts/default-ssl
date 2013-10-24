@@ -1,0 +1,38 @@
+<IfModule mod_ssl.c>
+<VirtualHost _default_:443>
+        ServerName domain.xxx
+        ServerAlias www.domain.xxx
+        ServerAdmin user@domain.xxx
+
+        DocumentRoot /var/www
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /var/www/>
+                Options FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/ssl_access.log combined
+
+        SSLEngine on
+
+        SSLCertificateFile    /etc/ssl/certs/domain.xxx.cert.pem
+        SSLCertificateKeyFile /etc/ssl/private/domain.xxx.key
+        SSLCertificateChainFile /etc/ssl/certs/domain.xxx.chain.pem
+
+        SSLProtocol ALL -SSLv2
+        SSLHonorCipherOrder On
+        SSLCipherSuite ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!AECDH:!MD5:!DSS
+
+</VirtualHost>
+</IfModule>
