@@ -20,9 +20,10 @@
   }
   else
   {
-        // load $entry with the submitted json values
+        // load $request with the submitted json values
         $request = json_decode($json, true);
 
+	// construct a insert query populated by the JSON attribues and values
         $sql = 'INSERT INTO visit ( field1,
                                     field2,
                                     field3,
@@ -32,8 +33,11 @@
                               .'"'.$request['field3'].'",'
                               .$request['field4'].
                  .');';
+
+	// Execute the Query
         $db_conn->query($sql);
 
+	// display the record identifier for the client
         echo '{ "record_id": '. $db_conn->insert_id . ' }';
          
         $db_conn->close();
