@@ -24,6 +24,9 @@
 
         CustomLog ${APACHE_LOG_DIR}/ssl_access.log combined
 
+	# Setup  HTTP Strict Transportation Security
+        Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+
         SSLEngine on
 
         SSLCertificateFile    /etc/ssl/certs/domain.xxx.cert.pem
