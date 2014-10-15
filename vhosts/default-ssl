@@ -33,7 +33,7 @@
         SSLCertificateKeyFile /etc/ssl/private/domain.xxx.key
         SSLCertificateChainFile /etc/ssl/certs/domain.xxx.chain.pem
 
-	SSLProtocol ALL -SSLv2
+	SSLProtocol All -SSLv2 -SSLv3
 	SSLHonorCipherOrder On
 	SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH EDH+aRSA 3DES +3DES !aNULL !eNULL !LOW !MD5 !EXP"
 
